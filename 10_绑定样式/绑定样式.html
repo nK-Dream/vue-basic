@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>样式绑定</title>
+    <style>
+        .basic{
+            width: 500px;
+            height: 300px;
+            border: 1px solid #ccc
+        }
+        .normal{
+            background: skyblue;
+        }
+        .bad{
+            background: #ccc;
+        }
+        .happy{
+            background: orange;
+        }
+        .test1{
+            background: palegreen;
+        }
+        .test2{
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .test3{
+            border-radius: 20px;
+            padding: 20px;
+        }
+    </style>
+    <script src="../js/vue.js"></script>
+</head>
+
+<body>
+    <div id="root">
+        <!-- 绑定class样式--字符串写法，适用于：样式类名不确定，需要动态指定 -->
+        <div class="basic" :class="moon" @click="changeMoon">{{name}}</div><br><br>
+
+        <!-- 绑定class样式--数组写法，适用于：要绑定的样式个数不确定、名字也不确定 -->
+        <div class="basic" :class="classArr" @click="changeMoon">{{name}}</div><br><br>
+
+        <!-- 绑定class样式--对象写法，适用于：要绑定的样式个数确定、名字也确定，但要动态决定用不用 -->
+        <div class="basic" :class="classObj" @click="changeMoon">{{name}}</div><br><br>
+    </div>
+    <script>
+        new Vue({
+            el: '#root',
+            data: {
+                name: '张三',
+                moon: 'normal',
+                classArr:['test1','test2','test3'],
+                classObj:{
+                    test1:true,
+                    test2:true
+                }
+            },
+            methods: {
+                changeMoon(){
+                    const arr = ['happy','bad','normal']
+                    this.moon = arr[Math.floor(Math.random()*3)]
+                }
+            },
+        })
+    </script>
+</body>
+
+</html>
