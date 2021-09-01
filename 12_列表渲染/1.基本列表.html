@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>姓名案例_计算属性简写</title>
+    <title>基本列表</title>
     <script src="../js/vue.js"></script>
 </head>
 
@@ -18,7 +18,7 @@
         <!-- 遍历数组 -->
         <h2>人员列表（遍历数组）</h2>
         <ul>
-            <li v-for="p in persons" ::key="p.id">
+            <li v-for="p in persons" :key="p.id">
                 {{ p.name }} --- {{ p.age }}
             </li>
         </ul>
@@ -26,7 +26,7 @@
         <!-- 遍历对象 -->
         <h2>车辆信息（遍历对象）</h2>
         <ul>
-            <li v-for="(val,k) in car" ::key="k">
+            <li v-for="(val,k) in car" :key="k">
                 {{ k }} --- {{ val }}
             </li>
         </ul>
@@ -34,7 +34,7 @@
         <!-- 遍历字符串 -->
         <h2>测试遍历字符串（用的少）</h2>
         <ul>
-            <li v-for="(char,index) in str" ::key="index">
+            <li v-for="(char,index) in str" :key="index">
                 {{ char }} --- {{ index }}
             </li>
         </ul>
@@ -42,7 +42,7 @@
         <!-- 遍历指定次数 -->
         <h2>测试遍历指定次数（用的很少）</h2>
         <ul>
-            <li v-for="(number,) in 5" ::key="index">
+            <li v-for="(number,) in 5" :key="index">
                 {{ index }} --- {{ number }}
             </li>
         </ul>
