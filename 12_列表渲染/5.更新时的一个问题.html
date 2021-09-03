@@ -21,25 +21,27 @@
     </div>
     <script>
         new Vue({
-                el: '#root',
-                data: {
-                    persons: [
-                        { id: '001', name: '马冬梅', age: 18, sex: '女' },
-                        { id: '002', name: '周冬雨', age: 32, sex: '女' },
-                        { id: '003', name: '周杰伦', age: 24, sex: '男' },
-                        { id: '004', name: '温兆伦', age: 21, sex: '男' },
-                    ]
-                },
-                methods:{
-                    updateMei(){
-                        // this.persons[0].name = '马老师' //奏效
-                        // this.persons[0].age = 58 //奏效
-                        // this.persons[0].sex = '男' //奏效
+            el: '#root',
+            data: {
+                persons: [
+                    { id: '001', name: '马冬梅', age: 18, sex: '女' },
+                    { id: '002', name: '周冬雨', age: 32, sex: '女' },
+                    { id: '003', name: '周杰伦', age: 24, sex: '男' },
+                    { id: '004', name: '温兆伦', age: 21, sex: '男' },
+                ]
+            },
+            methods: {
+                updateMei() {
+                    // this.persons[0].name = '马老师' //奏效
+                    // this.persons[0].age = 58 //奏效
+                    // this.persons[0].sex = '男' //奏效
 
-                        this.persons[0] = { id: '001', name: '马老师', age: 58, sex: '男'}
-                    }
+                    // this.persons[0] = { id: '001', name: '马老师', age: 58, sex: '男'} //不奏效
+
+                    this.person.splice(0, 1, { id: '001', name: '马老师', age: 58, sex: '男' })
                 }
-            })
+            }
+        })
     </script>
 </body>
 
