@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>组件嵌套</title>
+    <script src="../js/vue.js"></script>
+</head>
+
+<body>
+
+    <div id="root">
+        <app></app>
+    </div>
+    <script>
+        //创建teacher组件
+        const teacher = Vue.extend({
+            template: `
+                <div>
+                    <h2>教师姓名：{{name}}</h2>
+                    <h2>教师年龄：{{age}}</h2>    
+                </div>
+            `,
+            data() {
+                return {
+                    name: '马保国',
+                    age: 69
+                }
+            }
+        })
+
+        // 创建school组件
+        const school = Vue.extend({
+            template: `
+                <div>
+                    <h2>学校名称：{{name}}</h2>
+                    <h2>学校地址：{{address}}</h2>
+                    <teacher></teacher>
+                </div>
+            `,
+            data() {
+                return {
+                    name: '浑元形意太极',
+                    address: '河南'
+                }
+            },
+            components: {
+                teacher
+            }
+        })
+
+        //创建hello组件
+        const hello = Vue.extend({
+            template: `<h2>松果弹抖闪电鞭</h2>`
+        })
+
+        //创建app组件
+        const app = Vue.extend({
+            template: `
+                <div>
+                    <hello></hello>
+                    <school></school>
+                </div>
+            `,
+            components: {
+                school,
+                hello
+            }
+        })
+
+        new Vue({
+            el: '#root',
+            //第二步：注册组件（局部）
+            components: {
+                app
+            }
+        })
+    </script>
+</body>
+
+</html>

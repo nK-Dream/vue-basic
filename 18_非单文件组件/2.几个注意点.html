@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>几个注意点</title>
+    <script src="../js/vue.js"></script>
+</head>
+
+<body>
+    <!-- 
+        几个注意点：
+            1.关于组件名：
+                一个单词组成：
+                    第一种写法(首字母小写)：person
+                    第二种写法(首字母大写)：Person
+                多个单词组成：
+                    第一种写法(kebab-case命名)：my-person
+                    第二种写法(CamelCase命名)：MyPerson (需要Vue脚手架支持)
+                备注：
+                    (1)组件名尽可能回避HTML中已有的元素名称，例如：h2、H2都不行。
+                    (2)可以使用name配置项指定组件在开发者工具中呈现的名字。
+            
+            2.关于组件标签：
+                第一种写法：<person></person>
+                第二种写法：<person/>
+                备注：不使用脚手架时，<person/>会导致后续组件不能渲染。
+
+            3.一个简写方式：
+                const person = Vue.extend(options) 可简写为：const person = options
+
+     -->
+
+    <div id="root">
+        <my-person></my-person>
+    </div>
+    <script>
+        // 第一步：创建person组件
+        /*const person = Vue.extend({
+            template:`
+                <div>
+                    <h2>姓名：{{name}}</h2>
+                    <h2>年龄：{{age}}</h2>
+                </div>
+            `,
+            data(){
+                return {
+                    name: '张三',
+                    age: 18
+                }
+            }
+        }) */
+
+        //简写
+        const person = {
+            name: 'person',
+            template: `
+                <div>
+                    <h2>姓名：{{name}}</h2>
+                    <h2>年龄：{{age}}</h2>
+                </div>
+            `,
+            data() {
+                return {
+                    name: '张三',
+                    age: 18
+                }
+            }
+        }
+
+        new Vue({
+            el: '#root',
+            //第二步：注册组件（局部）
+            components: {
+                'my-person': person
+            }
+        })
+    </script>
+</body>
+
+</html>
